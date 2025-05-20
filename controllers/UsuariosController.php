@@ -14,12 +14,18 @@
             $this->view->show('usuarios', array('usuarios' =>  $usuarios));
         }
 
-        public function registrar() {
-            $this->view->render($this, 'registrar');
+        public function registrarse() {
+            $tiposPropiedadController = new TipoPropiedadController();
+            $tiposPropiedad = $tiposPropiedadController->index();
+
+            $this->view->show('registrarse', array('tiposPropiedad' => $tiposPropiedad));
         }
 
-        public function login() {
-            $this->view->render($this, 'login');
+        public function ingresar() {
+            $tiposPropiedadController = new TipoPropiedadController();
+            $tiposPropiedad = $tiposPropiedadController->index();
+
+            $this->view->show('ingresar', array('tiposPropiedad' => $tiposPropiedad));
         }
 
         public function logout() {
