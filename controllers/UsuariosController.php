@@ -79,9 +79,9 @@
             if ($request) {
                 $_SESSION["usuario"] = $request;
 
-                $this->dashboard();
+                header("location: {$config->get('http')}usuarios/dashboard");
             } else {
-                $this->registrarse();
+                header("location: {$config->get('http')}usuarios/registrarse");
             }
         }
 

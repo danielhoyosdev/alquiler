@@ -70,14 +70,18 @@
 <nav class="menu">
     <div class="wrapper-menu">
         <ul class="item-menu">
-        <?php foreach ($tiposPropiedad as $tipo) { ?>
             <li>
-                <a href="<?= $config->get('http') ?>propiedad/categoria/<?= $tipo->getIdTipoPropiedad() ?>">
-                    <i class="<?= $tipo->getIcon() ?>"></i>
-                    <label><?= $tipo->getNombre() ?></label>
+                <a href="<?= $config->get('http') ?>usuarios/dashboard/">
+                    <i class="fa-solid fa-user"></i>
+                    <label>Perfil</label>
                 </a>
             </li>
-        <?php } ?>
+            <li>
+                <a href="<?= $config->get('http') ?>propiedades/admin/">
+                    <i class="fa-solid fa-building-user"></i>
+                    <label>Propiedades</label>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
