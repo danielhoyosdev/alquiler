@@ -38,5 +38,26 @@ class PropiedadController {
 
         $this->view->show('index', array('tiposPropiedad' => $tiposPropiedad, 'propiedades' =>  $propiedades));
     }
+
+    public function admin()
+    {
+        $tiposPropiedadController = new TipoPropiedadController();
+        $propiedadController = new PropiedadController();
+        $tiposPropiedad = $tiposPropiedadController->index();
+        $propiedades = $propiedadController->index();
+
+        $this->view->show('propiedades-admin', array('tiposPropiedad' =>  $tiposPropiedad, 'propiedades' => $propiedades));
+    }
+
+    public function eliminar()
+    {
+        $propiedad = empty($_GET["id"]) ? "1" : "{$_GET["id"]}";
+        $propiedadModel = new PropiedadModel();
+        $imagenPropiedadModel = new ImagenPropiedadModel();
+        $requestImagenes = $imagenPropiedadModel->delete($propiedad);
+        $requestPropiedad = $propiedadModel->delete($propiedad);
+
+        $this->admin();
+    }
 }
 ?>

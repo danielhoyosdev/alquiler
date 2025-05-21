@@ -12,7 +12,8 @@ class PropiedadModel
 
     public function getPropiedades()
     {
-        $sql = "SELECT p.id_propiedad, p.nombre, p.departamento, p.ciudad, p.precio, ip.path as imagen 
+        $sql = "SELECT p.id_propiedad, p.nombre, p.departamento, p.ciudad, p.precio, p.num_habitaciones, 
+                p.num_banos, p.wifi, p.parqueadero, ip.path as imagen 
                 FROM propiedad as p JOIN imagen_propiedad as ip WHERE p.id_propiedad = ip.id_propiedad AND ip.destacada = 1";
         $query = $this->conexion->query($sql);
 
@@ -35,5 +36,14 @@ class PropiedadModel
         $query = $this->conexion->prepare($sql);
         $query->execute();
         return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function delete($propiedad)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE id_propiedad = {$propiedad}";
+        $query = $this->conexion->prepare($sql);
+        $query->execute();
+
+        return $query->rowCount();
     }
 }

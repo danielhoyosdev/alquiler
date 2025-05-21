@@ -20,7 +20,7 @@
 <body>
     <?php include_once 'components/header-admin.php'; ?>
 
-    <div>
+    <div class="propiedades-container">
         <h2>Perfil: <?= $usuario->getNombre() ?> <?= $usuario->getApellido() ?></h2>
     </div>
 
