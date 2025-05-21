@@ -1,16 +1,20 @@
 <header>
     <div class="header-container">
-        <div class="logo">
+        <a href="<?= $config->get('http') ?>" class="logo">
             <img src="<?= $config->get('images')?>logo.png" alt="Logo CityScape" />
-        </div>
+        </a>
 
         <nav>
             <ul>
                 <li>
-                    <a>Inicio</a>
+                    <a href="<?= $config->get('http') ?>">
+                        Inicio
+                    </a>
                 </li>
                 <li>
-                    <a>Alojamiento</a>
+                    <a>
+                        Alojamiento
+                    </a>
                 </li>
                 <li>
                     <a>Ofertas</a>
@@ -23,21 +27,41 @@
                 <i class="fa-solid fa-angles-down item-submenu"></i>
 
                 <div>
-                    <label>Daniel Hoyos</label>
+                    <label>
+                        <?php
+                        if(isset($_SESSION["usuario"])) {
+                            echo $usuario->getNombre() . "" . $usuario->getApellido() . " ";
+                        } else {
+                            echo "Usuario ";
+                        }
+                        ?>
+                    </label>
                     <!-- <img src="default_user.png" alt="Imagén de Usuario"/> -->
                     <i class="fa-solid fa-circle-user"></i>
                 </div>
             </div>
             <ul class="submenu">
-                <li>
-                    <a href="?controller=usuarios&action=registrarse">Registrarse</a>
-                </li>
-                <li>
-                    <a href="?controller=usuarios&action=ingresar">Iniciar sesión</a>
-                </li>
-                <li>
-                    <a href="#">Centro de ayuda</a>
-                </li>
+                <?php
+                if(!isset($_SESSION["usuario"])) { ?>
+                    <li>
+                        <a href="<?= $config->get('http') ?>usuarios\registrarse">Registrarse</a>
+                    </li>
+                    <li>
+                        <a href="<?= $config->get('http') ?>usuarios\ingresar">Iniciar sesión</a>
+                    </li>
+                    <?php
+                }
+                ?>
+
+                <?php
+                    if(isset($_SESSION["usuario"])) { ?>
+                        <li>
+                            <a href="<?= $config->get('http') ?>usuarios\logout">Cerrar sesión</a>
+                        </li>
+                <?php
+                    }
+                ?>
+
             </ul>
         </div>
     </div>
@@ -48,7 +72,7 @@
         <ul class="item-menu">
         <?php foreach ($tiposPropiedad as $tipo) { ?>
             <li>
-                <a>
+                <a href="<?= $config->get('http') ?>propiedad/categoria/<?= $tipo->getIdTipoPropiedad() ?>">
                     <i class="<?= $tipo->getIcon() ?>"></i>
                     <label><?= $tipo->getNombre() ?></label>
                 </a>

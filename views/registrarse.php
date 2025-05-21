@@ -21,7 +21,7 @@
     <?php include_once 'components/header.php'; ?>
 
     <div class="form-auth">
-        <form action="#" method="POST">
+        <form action="registrarsePost" method="POST">
             <h2>Registrarse</h2>
 
             <label for="nombre">Nombre</label>
