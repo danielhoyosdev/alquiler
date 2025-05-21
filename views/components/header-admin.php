@@ -71,13 +71,13 @@
     <div class="wrapper-menu">
         <ul class="item-menu">
             <li>
-                <a href="<?= $config->get('http') ?>usuarios/dashboard/">
+                <a href="<?= $config->get('http') ?>usuarios/dashboard">
                     <i class="fa-solid fa-user"></i>
                     <label>Perfil</label>
                 </a>
             </li>
             <li>
-                <a href="<?= $config->get('http') ?>propiedades/admin/">
+                <a href="<?= $config->get('http') ?>propiedad/admin">
                     <i class="fa-solid fa-building-user"></i>
                     <label>Propiedades</label>
                 </a>
