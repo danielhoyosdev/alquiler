@@ -20,10 +20,27 @@
 <body>
     <?php include_once 'components/header-admin.php'; ?>
 
-    <div>
-        <h2>Perfil: <?= $usuario->getNombre() ?> <?= $usuario->getApellido() ?></h2>
-    </div>
+    <div class="propiedades-container">        
+        <div class="form-auth">
+            <form action="registrarsePost" method="POST">
+                <h2>Perfil: <?= $usuario->getNombre() ?> <?= $usuario->getApellido() ?></h2>
 
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" value="<?= $usuario->getNombre() ?>" required>
+
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" value="<?= $usuario->getApellido() ?>" required>
+
+                <label for="email">Teléfono</label>
+                <input type="number" id="telefono" name="telefono" value="<?= $usuario->getTelefono() ?>" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" value="<?= $usuario->getCorreo() ?>" required>
+
+                <div class="mensaje" id="mensajeError"></div>
+            </form>
+        </div>
+    </div>
     <script src="<?= $config->get('js')?>script.js"></script>
 </body>
 
